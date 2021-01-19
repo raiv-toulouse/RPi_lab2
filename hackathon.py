@@ -45,8 +45,19 @@ import cv2
 import tensorflow.keras as tf
 import pyttsx3
 import math
+import RPi.GPIO as GPIO
 # use matplotlib if cv2.imshow() doesn't work
 # import matplotlib.pyplot as plt
+
+# Pin Definitions
+class_pin = [12,16,18]  # BCM pin 18, BOARD pin 12
+
+# Pin Setup:
+GPIO.setmode(GPIO.BOARD)  # BCM pin-numbering scheme from Raspberry Pi
+# set pin as an output pin with optional initial state of HIGH
+GPIO.setup(class_0_pin, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(class_1_pin, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(class_2_pin, GPIO.OUT, initial=GPIO.LOW)
 
 # main line code
 # if statement to circumvent issue in windows
@@ -84,9 +95,6 @@ if __name__ == '__main__':
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, frameHeight)
     # enable auto gain
     cap.set(cv2.CAP_PROP_GAIN, 0)
-
-    # creating a queue to share data to speech process
-    speakQ = multiprocessing.Queue()
 
     # keeps program running forever until ctrl+c or window is closed
     while True:
@@ -168,8 +176,10 @@ if __name__ == '__main__':
                 conf_label = ""
             # if above confidence threshold, send to queue
             if confidence[i] > conf_threshold:
-                speakQ.put(classes[i])
                 threshold_class = classes[i]
+                GPIO.output(class_pin[i], True)  # switch on the LED
+            else:
+                GPIO.output(class_pin[i], False) # Switch off the LED
         # add label class above confidence threshold
         cv2.putText(
             img=bordered_frame,
