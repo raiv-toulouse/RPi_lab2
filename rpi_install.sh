@@ -58,8 +58,11 @@ sudo pip3 install setuptools
 sudo pip3 install virtualenv virtualenvwrapper
 
 # setup virtual environment
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export WORKON_HOME=~/Envs
+mkdir -p $WORKON_HOME
+source /usr/local/bin/virtualenvwrapper.sh
 mkvirtualenv hackathon
-workon hackathon
 
 # install PIP packages in virtual environment
 pip3 install -r requirements.txt
@@ -78,5 +81,5 @@ sudo apt-get --assume-yes clean
 sudo apt-get --assume-yes install vlc
 
 echo "Done!"
-echo "To activate your virtual environment, use command 'source TMenv/bin/activate'."
-echo "To exit your virtual enviroment, use command 'deactivate'."
+echo "To activate your virtual environment, use command 'workon hackathon'."
+echo "To exit your virtual environment, use command 'deactivate'."

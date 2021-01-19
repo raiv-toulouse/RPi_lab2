@@ -53,7 +53,7 @@ import math
 if __name__ == '__main__':
 
     # read .txt file to get labels
-    labels_path = "la_croix_model/labels.txt"
+    labels_path = "labels.txt"
     # open input file label.txt
     labelsfile = open(labels_path, 'r')
 
@@ -68,7 +68,7 @@ if __name__ == '__main__':
     labelsfile.close()
 
     # load the teachable machine model
-    model_path = 'la_croix_model/keras_model.h5'
+    model_path = 'keras_model.h5'
     model = tf.models.load_model(model_path, compile=False)
 
     # initialize webcam video object
