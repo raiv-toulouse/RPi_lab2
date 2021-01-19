@@ -174,7 +174,7 @@ if __name__ == '__main__':
         cv2.putText(
             img=bordered_frame,
             text=threshold_class,
-            org=(int(0), int(frameHeight+20)),
+            org=(int(20), int(frameHeight)),
             fontFace=cv2.FONT_HERSHEY_SIMPLEX,
             fontScale=0.75,
             color=(255, 255, 255)
