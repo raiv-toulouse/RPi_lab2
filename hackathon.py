@@ -55,9 +55,8 @@ class_pin = [12,16,18]  # BCM pin 18, BOARD pin 12
 # Pin Setup:
 GPIO.setmode(GPIO.BOARD)  # BCM pin-numbering scheme from Raspberry Pi
 # set pin as an output pin with optional initial state of HIGH
-GPIO.setup(class_0_pin, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(class_1_pin, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(class_2_pin, GPIO.OUT, initial=GPIO.LOW)
+for i in range(3):
+    GPIO.setup(class_pin[i], GPIO.OUT, initial=GPIO.LOW)
 
 # main line code
 # if statement to circumvent issue in windows
