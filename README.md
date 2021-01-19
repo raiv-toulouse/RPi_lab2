@@ -4,3 +4,5 @@ Sets up a Python development environment using Tensorflow and OpenCV to run Teac
 This is based on the following article :  
   
 https://www.instructables.com/id/La-Croix-Flavor-Detector-Easy-Object-Detection-on-/  
+
+Used for Parcours Ouvert Hackathon#2
