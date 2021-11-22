@@ -75,6 +75,7 @@ pip3 install opencv-contrib-python==4.0.1.24 # issues here for pi, pi uses 4.0.1
 pip3 install wrapt --upgrade --ignore-installed # only for the pi
 pip3 install h5py==2.10.0
 pip3 install RPi.GPIO
+pip3 install picamera
 pip3 install https://github.com/bitsy-ai/tensorflow-arm-bin/releases/download/v2.4.0/tensorflow-2.4.0-cp37-none-linux_armv7l.whl
 deactivate
 
