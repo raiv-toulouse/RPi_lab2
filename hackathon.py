@@ -57,11 +57,11 @@ from picamera import PiCamera
 np.set_printoptions(suppress=True)
 
 # Pin Definitions
-class_pin = [12,16,18, 22]  # BCM pin 18, BOARD pin 12
+class_pin = [12,16,18, 22]  # BOARD pin 18, BOARD pin 12
 
 # Pin Setup:
-GPIO.setmode(GPIO.BOARD)  # BCM pin-numbering scheme from Raspberry Pi
-# set pin as an output pin with optional initial state of HIGH
+GPIO.setmode(GPIO.BOARD)  # BOARD pin-numbering scheme from Raspberry Pi
+# set pin as an output pin with optional initial state of LOW
 for i in range(len(class_pin)):
     GPIO.setup(class_pin[i], GPIO.OUT, initial=GPIO.LOW)
 
