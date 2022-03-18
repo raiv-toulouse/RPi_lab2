@@ -57,7 +57,7 @@ from picamera import PiCamera
 np.set_printoptions(suppress=True)
 
 # Pin Definitions
-class_pin = [12,16,18, 22]  # BOARD pin 18, BOARD pin 12
+class_pin = [12,16,18,22]  # BCM pin 18, BOARD pin 12
 
 # Pin Setup:
 GPIO.setmode(GPIO.BOARD)  # BOARD pin-numbering scheme from Raspberry Pi
@@ -73,7 +73,7 @@ rawCapture = PiRGBArray(camera, size=camera.resolution)
 # allow the camera to warmup
 time.sleep(0.1)
 
-# read .txt file to get labels
+# read labels.txt file to get labels
 labels_path = "../labels.txt"
 # open input file label.txt
 labelsfile = open(labels_path, 'r')
@@ -88,7 +88,7 @@ while line:
 # close label file
 labelsfile.close()
 
-# load the teachable machine model
+# load the teachable machine model previously trained by teachable_machine 
 model_path = '../keras_model.h5'
 model = tf.models.load_model(model_path, compile=False)
 
@@ -110,10 +110,10 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     # load the image into the array
     data[0] = normalized_image_array
 
-    # run the prediction
+    # run the prediction. In the prediction, we have the % for all classes for classification
     predictions = model.predict(data)
 
-    # confidence threshold is 90%.
+    # confidence threshold is 90% so a class is recognize if its confidence % is over this threshold
     conf_threshold = 90
     confidence = []
     conf_label = ""
@@ -175,7 +175,6 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     
     # clear the stream in preparation for the next frame
     rawCapture.truncate(0)
-
     
     # original video feed implementation
     cv2.imshow("Capturing", bordered_frame)
