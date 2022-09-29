@@ -61,8 +61,8 @@ CAMERA_INDEX = 2 # 0 pour la webcam intégrée au PV
 FRAME_WIDTH = 640
 FRAME_HEIGHT = 480
 PER_LINE = 2  # number of classes per line of text
-COMMANDES = {'gauche':('5','2'), 'droite':('2','5'), 'avance':('5','5'),
-             'recule':('2','2'), 'stop':('x','x'), 'rien':('x','x')}
+COMMANDES = {'gauche':('5','2'), 'droite':('2','5'), 'avance':('5','5'), 'recule':('2','2'),
+             'avance_rapide':('7','7'), 'stop':('x','x'), 'rien':('x','x')}
 MODEL_ZIP_FILE = "/home/phil/Downloads/converted_keras.zip"
 DESTINATION_FOLDER = "/home/phil/Icam/O3_lab2_IA/RPi_lab2"
 LABEL_FILE = DESTINATION_FOLDER + "/labels.txt"
